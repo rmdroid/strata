@@ -1,0 +1,1424 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Strata · Your health data treasure in your hands</title>
+  <meta name="description" content="Strata makes Apple Health data visible and exportable on-device. No cloud dependency, no third-party servers, full data ownership.">
+  <meta name="keywords" content="Strata, Apple Health export, local health data, iPhone health data, privacy app, data ownership, HealthKit export">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta name="theme-color" content="#1f1712">
+  <meta name="author" content="Robert Meyer">
+  <meta name="application-name" content="Strata">
+  <meta name="apple-mobile-web-app-title" content="Strata">
+  <link rel="canonical" href="https://strata-app.de/index_en.html">
+  <link rel="alternate" hreflang="de-DE" href="https://strata-app.de/">
+  <link rel="alternate" hreflang="en" href="https://strata-app.de/index_en.html">
+  <link rel="alternate" hreflang="x-default" href="https://strata-app.de/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Strata · Your health data treasure in your hands">
+  <meta property="og:description" content="Understand and export Apple Health data locally. CSV, JSON, or Markdown.">
+  <meta property="og:image" content="img/en/01-datenschatz.png">
+  <meta property="og:url" content="https://strata-app.de/index_en.html">
+  <meta property="og:site_name" content="Strata">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Strata · Your health data treasure in your hands">
+  <meta name="twitter:description" content="Data ownership, security, and simplicity.">
+  <meta name="twitter:image" content="img/en/01-datenschatz.png">
+  <link rel="icon" type="image/png" href="img/app-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Strata",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "iOS, iPadOS",
+      "description": "Strata makes Apple Health data visible and exportable on-device. No cloud dependency, no third-party servers, full data ownership.",
+      "image": "https://strata-app.de/img/en/01-datenschatz.png",
+      "url": "https://strata-app.de/index_en.html",
+      "offers": {
+        "@type": "Offer",
+        "price": "9.99",
+        "priceCurrency": "EUR",
+        "availability": "https://schema.org/InStock"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Robert Meyer"
+      },
+      "featureList": [
+        "Local access to Apple Health data",
+        "Export as CSV, JSON, or Markdown",
+        "DE and EN interface",
+        "No cloud dependency"
+      ]
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are my health data uploaded to a cloud?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Strata is designed for local processing. Export files are only created when you explicitly trigger them."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I choose the export format freely?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. For each export, you can choose CSV, JSON, or Markdown."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the app called Strata?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Strata means layers. The app works with clearly separated, exportable data layers."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I evaluate exported data with a local LLM?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Export files can be processed with local AI tools while keeping full data ownership."
+          }
+        }
+      ]
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #f7efe5;
+      --bg-2: #efe2d1;
+      --ink: #2f241c;
+      --muted: #6b5849;
+      --line: rgba(77, 55, 37, 0.16);
+      --line-strong: rgba(77, 55, 37, 0.26);
+      --card: rgba(255, 249, 241, 0.86);
+      --card-strong: #fff8ef;
+      --accent: #b06a3d;
+      --accent-dark: #8f4f27;
+      --accent-soft: rgba(176, 106, 61, 0.14);
+      --deep: #20160f;
+      --shadow-xl: 0 36px 90px rgba(49, 32, 18, 0.2);
+      --shadow-lg: 0 22px 56px rgba(49, 32, 18, 0.14);
+      --shadow-md: 0 12px 30px rgba(49, 32, 18, 0.12);
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --max: 1220px;
+      --space: clamp(3rem, 7vw, 6.6rem);
+      --nav-h: 78px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    body {
+      margin: 0;
+      font-family: "Sora", system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(900px 480px at -6% -8%, rgba(176,106,61,0.17), transparent 64%),
+        radial-gradient(700px 420px at 102% 0%, rgba(117, 161, 102, 0.13), transparent 68%),
+        linear-gradient(180deg, #fcf5ec 0%, var(--bg) 54%, var(--bg-2) 100%);
+      line-height: 1.58;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      padding-top: var(--nav-h);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+    button { font: inherit; }
+
+    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+    .section { padding: var(--space) 0; }
+
+    .site-nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 40;
+      backdrop-filter: blur(12px);
+      background: rgba(250, 240, 228, 0.82);
+      border-bottom: 1px solid rgba(64, 40, 24, 0.08);
+    }
+    .site-nav .container {
+      min-height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.82rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .brand img {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(176,106,61,0.28);
+    }
+    .nav-links {
+      display: inline-flex;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--ink); outline: none; }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      background: var(--deep);
+      color: #fff;
+      font-size: 0.9rem;
+      box-shadow: var(--shadow-md);
+      white-space: nowrap;
+    }
+    .nav-side {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.28rem;
+      padding: 0.24rem;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+    }
+    .lang-switch a,
+    .lang-switch span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 34px;
+      min-height: 30px;
+      padding: 0 0.56rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+    }
+    .lang-switch .active {
+      background: var(--deep);
+      color: #fff;
+    }
+    .lang-switch a:hover,
+    .lang-switch a:focus-visible {
+      color: var(--ink);
+      outline: none;
+    }
+
+    .hero {
+      position: relative;
+      padding: 3.5rem 0 1.7rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: 2rem;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.42;
+    }
+    h1 {
+      margin: 1.2rem 0 0;
+      font-size: clamp(2.6rem, 7.2vw, 5.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.065em;
+      max-width: 9.5ch;
+    }
+    h1 span { display: block; color: var(--accent); }
+    .hero-lead {
+      margin: 1.4rem 0 0;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 58ch;
+    }
+    .hero-tags {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 1.3rem;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.72);
+      font-size: 0.78rem;
+      box-shadow: 0 6px 16px rgba(57, 36, 22, 0.07);
+    }
+    .hero-actions {
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-top: 1.55rem;
+    }
+    .button,
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      border-radius: 16px;
+      padding: 0.92rem 1.16rem;
+      transition: transform 170ms ease, box-shadow 170ms ease;
+    }
+    .button {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+      box-shadow: 0 18px 34px rgba(176,106,61,0.28);
+    }
+    .button-secondary {
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.82);
+      color: var(--ink);
+    }
+    .button:hover,
+    .button-secondary:hover,
+    .button:focus-visible,
+    .button-secondary:focus-visible {
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .hero-stage {
+      background: linear-gradient(160deg, #2d1f16 0%, #1f1712 100%);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-xl);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 1.1rem;
+      display: grid;
+      gap: 0.9rem;
+      align-items: center;
+    }
+    .stage-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: rgba(255,245,234,0.86);
+      padding: 0.45rem 0.7rem;
+      font-size: 0.8rem;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 12px;
+      background: rgba(255,255,255,0.04);
+    }
+    .stage-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.78fr;
+      gap: 0.8rem;
+      align-items: stretch;
+    }
+    .stage-grid img {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.32);
+    }
+
+    .signal-band {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.8rem;
+    }
+    .signal-card {
+      background: rgba(255,255,255,0.76);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 0.85rem 0.92rem;
+      box-shadow: var(--shadow-md);
+      min-height: 104px;
+    }
+    .signal-card strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.97rem;
+      line-height: 1.12;
+    }
+    .signal-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+      gap: 1.4rem;
+      align-items: end;
+      margin-bottom: 1.8rem;
+    }
+    .section-head h2 {
+      margin: 0.6rem 0 0;
+      font-size: clamp(1.9rem, 4.5vw, 3.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.055em;
+    }
+    .section-head p { margin: 0; color: var(--muted); }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .workflow-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 1.2rem;
+      box-shadow: var(--shadow-lg);
+      min-height: 205px;
+    }
+    .step-no {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 0.86rem;
+      margin-bottom: 0.82rem;
+    }
+    .workflow-card h3 {
+      margin: 0 0 0.45rem;
+      font-size: 1.02rem;
+      line-height: 1.16;
+    }
+    .workflow-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    .shot {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow-md);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+      cursor: pointer;
+      text-align: left;
+      padding: 0;
+    }
+    .shot:hover,
+    .shot:focus-visible {
+      transform: translateY(-2px);
+      border-color: rgba(176,106,61,0.38);
+      box-shadow: 0 22px 42px rgba(57, 36, 22, 0.17);
+      outline: none;
+    }
+    .shot-thumb {
+      aspect-ratio: 0.88 / 1;
+      background: #1f1712;
+      border-bottom: 1px solid rgba(64,40,24,0.1);
+      overflow: hidden;
+    }
+    .shot-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+    .shot-copy {
+      padding: 0.88rem 0.9rem 0.95rem;
+      display: grid;
+      gap: 0.35rem;
+    }
+    .shot-copy strong {
+      font-size: 0.92rem;
+      line-height: 1.12;
+    }
+    .shot-copy span {
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    .pricing-wrap {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 1rem;
+    }
+    .pricing-main,
+    .pricing-side {
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .pricing-main {
+      background: linear-gradient(170deg, #23180f 0%, #1a130d 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #fdf6ed;
+    }
+    .pricing-main .inner,
+    .pricing-side .inner { padding: 1.55rem; }
+    .price {
+      margin: 0.85rem 0 0;
+      font-size: clamp(2.8rem, 5.4vw, 4.2rem);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+    .price-sub {
+      margin-top: 0.35rem;
+      color: rgba(255,245,234,0.78);
+      font-size: 0.95rem;
+    }
+    .appstore-button {
+      margin-top: 1.25rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      min-width: 220px;
+      padding: 0.78rem 1.12rem;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.66);
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+      font-size: 1.01rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.24);
+      cursor: not-allowed;
+      opacity: 0.9;
+    }
+    .appstore-button::before {
+      content: "􀣺";
+      font-size: 1.1rem;
+      margin-right: 0.5rem;
+    }
+    .pricing-side {
+      background: var(--card);
+      border: 1px solid var(--line);
+    }
+    .pricing-side h3 { margin: 0 0 0.7rem; }
+    .pricing-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+    .pricing-list li {
+      display: grid;
+      grid-template-columns: 10px 1fr;
+      gap: 0.7rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .pricing-list li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-top: 0.45rem;
+    }
+
+    .faq-list {
+      display: grid;
+      gap: 0.9rem;
+    }
+    .faq-item {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.8);
+      box-shadow: var(--shadow-md);
+    }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1rem 1.1rem;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "+";
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-dark);
+      flex: 0 0 auto;
+      font-size: 1.2rem;
+      line-height: 1;
+      font-weight: 500;
+    }
+    .faq-item[open] summary::after { content: "−"; }
+    .faq-answer {
+      padding: 0 1.1rem 1.1rem;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+    .faq-answer p { margin: 0; }
+
+    .footer {
+      margin-top: 1rem;
+      padding: 1.8rem 0 2.5rem;
+      border-top: 1px solid var(--line);
+      background: rgba(255,255,255,0.52);
+      backdrop-filter: blur(8px);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: start;
+    }
+    .footer-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .footer-links {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .footer-link-btn {
+      appearance: none;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+    }
+    .footer-links a:hover,
+    .footer-links a:focus-visible,
+    .footer-link-btn:hover,
+    .footer-link-btn:focus-visible { color: var(--ink); outline: none; }
+
+    .legal-modal,
+    .shot-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 1rem;
+      background: rgba(9, 6, 4, 0.72);
+      backdrop-filter: blur(8px);
+      z-index: 100;
+    }
+    .legal-modal.open,
+    .shot-modal.open { display: grid; }
+    .legal-dialog,
+    .shot-dialog {
+      width: min(920px, 100%);
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    }
+    .legal-dialog { height: min(82vh, 760px); }
+    .shot-dialog { max-height: min(88vh, 900px); }
+    .legal-head,
+    .shot-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.95rem 1rem;
+      border-bottom: 1px solid #ece9e5;
+      background: #fff;
+    }
+    .legal-head h3,
+    .shot-head h3 { margin: 0; font-size: 1rem; }
+    .legal-close,
+    .shot-close {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 999px;
+      background: #f1ede8;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .legal-frame {
+      width: 100%;
+      height: calc(100% - 58px);
+      border: 0;
+    }
+    .shot-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, 0.8fr);
+      min-height: 540px;
+      background: #fff;
+    }
+    .shot-body .visual {
+      background: #20160f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .shot-body .visual img {
+      max-height: 72vh;
+      width: auto;
+      max-width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 18px 42px rgba(0,0,0,0.3);
+    }
+    .shot-body .meta {
+      padding: 1.1rem;
+      display: grid;
+      align-content: start;
+      gap: 0.75rem;
+      background: linear-gradient(180deg, #fff, #faf5ef);
+    }
+    .shot-body .meta h4 {
+      margin: 0;
+      font-size: 1.22rem;
+      line-height: 1.08;
+    }
+    .shot-body .meta p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .to-top {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 60;
+      width: 50px;
+      height: 50px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--deep);
+      color: #fff;
+      box-shadow: 0 16px 36px rgba(32,22,15,0.25);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 170ms ease, transform 170ms ease, visibility 170ms ease;
+    }
+    .to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .updates-dialog {
+      width: min(620px, 100%);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.32);
+    }
+    .updates-body {
+      padding: 1.25rem;
+      display: grid;
+      gap: 0.95rem;
+      background: linear-gradient(180deg, #ffffff, #faf5ef);
+    }
+    .updates-copy h4 {
+      margin: 0;
+      font-size: 1.35rem;
+      line-height: 1.1;
+      letter-spacing: -0.04em;
+    }
+    .updates-copy p {
+      margin: 0.62rem 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+    .updates-form {
+      display: grid;
+      gap: 0.85rem;
+    }
+    .updates-row {
+      display: grid;
+      gap: 0.38rem;
+    }
+    .updates-row label {
+      font-size: 0.86rem;
+      color: var(--ink);
+    }
+    .updates-row input {
+      min-height: 50px;
+      padding: 0.78rem 0.9rem;
+      border-radius: 12px;
+      border: 1px solid #deccb9;
+      background: #fff;
+      color: var(--ink);
+    }
+    .updates-row input:focus {
+      outline: 2px solid rgba(176,106,61,0.22);
+      border-color: rgba(176,106,61,0.46);
+    }
+    .updates-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+    .updates-status {
+      min-height: 1.4rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+    .updates-status.is-success { color: #166534; }
+    .updates-status.is-error { color: #b91c1c; }
+    .updates-close {
+      width: 38px;
+      height: 38px;
+      border: 0;
+      border-radius: 999px;
+      background: #f1ede8;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    .cookie-notice {
+      position: fixed;
+      left: 1rem;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 80;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      align-items: center;
+      padding: 0.85rem 0.95rem;
+      border-radius: 16px;
+      border: 1px solid rgba(77,55,37,0.2);
+      background: rgba(255,250,244,0.98);
+      box-shadow: 0 16px 36px rgba(49,32,18,0.2);
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+    }
+    .cookie-notice.is-hidden {
+      transform: translateY(12px);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .cookie-text {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.87rem;
+      line-height: 1.45;
+      flex: 1 1 520px;
+    }
+    .cookie-ack {
+      appearance: none;
+      -webkit-appearance: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0.52rem 0.86rem;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.92);
+      color: var(--ink);
+      cursor: pointer;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(49,32,18,0.08);
+    }
+    .cookie-ack:hover,
+    .cookie-ack:focus-visible {
+      border-color: rgba(176,106,61,0.32);
+      outline: none;
+    }
+
+    @media (max-width: 1120px) {
+      .hero-grid,
+      .section-head,
+      .pricing-wrap,
+      .shot-body { grid-template-columns: 1fr; }
+      .workflow-grid,
+      .gallery-grid,
+      .signal-band { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .stage-grid { grid-template-columns: 1fr 1fr; }
+      .shot-body .visual img { max-height: 58vh; }
+    }
+    @media (max-width: 760px) {
+      .nav-links { display: none; }
+      .hero { padding-top: 2.2rem; }
+      .workflow-grid,
+      .gallery-grid,
+      .signal-band { grid-template-columns: 1fr; }
+      .stage-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .shot-body .meta h4 { font-size: 1.05rem; }
+      .cookie-notice { align-items: stretch; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-nav" aria-label="Navigation">
+    <div class="container">
+      <a class="brand" href="#top" aria-label="Strata homepage">
+        <img src="img/app-icon.png" alt="Strata Icon" loading="eager" decoding="async">
+        <span>Strata</span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#workflow">Workflow</a>
+        <a href="#screens">Screens</a>
+        <a href="#pricing">Buy</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-side">
+        <div class="lang-switch" aria-label="Language">
+          <a href="index.html" lang="de" hreflang="de">DE</a>
+          <span class="active" aria-current="page">EN</span>
+        </div>
+        <a class="nav-cta" href="#pricing">Mac App Store</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div>
+            <span class="eyebrow">Health data, redefined</span>
+            <h1>Your data treasure.<span>Your control.</span></h1>
+            <p class="hero-lead">Strata gives you direct access to your Apple Health data: local, understandable, and exportable. No cloud dependency. No third-party transfer. No forced interpretation.</p>
+            <div class="hero-tags">
+              <span class="tag">100% local on device</span>
+              <span class="tag">CSV · JSON · Markdown</span>
+              <span class="tag">DE/EN interface</span>
+            </div>
+            <div class="hero-actions">
+              <a class="button" href="#pricing">Go to purchase</a>
+              <a class="button-secondary" href="#screens">View screens</a>
+            </div>
+          </div>
+          <aside class="hero-stage" aria-label="App preview">
+            <div class="stage-head">
+              <span>Strata · Live Preview</span>
+              <span>iPhone + iPad</span>
+            </div>
+            <div class="stage-grid">
+              <img src="img/en/01-datenschatz.png" alt="Strata onboarding data treasure" loading="lazy" decoding="async">
+              <img src="img/en/06-eigene-auswertung.png" alt="Strata export and self-analysis" loading="lazy" decoding="async">
+            </div>
+          </aside>
+        </div>
+
+        <div class="signal-band" aria-label="Core statements">
+          <article class="signal-card">
+            <strong>Data ownership</strong>
+            <p>Your health history stays with you and under your control.</p>
+          </article>
+          <article class="signal-card">
+            <strong>Data security</strong>
+            <p>Export locally. No mandatory upload. No third-party account required.</p>
+          </article>
+          <article class="signal-card">
+            <strong>Simplicity</strong>
+            <p>Clear steps from access to export, without technical overhead.</p>
+          </article>
+          <article class="signal-card">
+            <strong>LLM-ready</strong>
+            <p>Structured output as a foundation for your own local analysis workflows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="workflow">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Workflow</span>
+            <h2>From hidden data to practical value in 4 steps.</h2>
+          </div>
+          <p>Strata guides users through a complete flow: understand access, reveal data depth, inspect the profile, and export by design.</p>
+        </div>
+        <div class="workflow-grid">
+          <article class="workflow-card">
+            <span class="step-no">01</span>
+            <h3>Build awareness</h3>
+            <p>The onboarding highlights how much health data your iPhone has collected over time.</p>
+          </article>
+          <article class="workflow-card">
+            <span class="step-no">02</span>
+            <h3>Grant read access</h3>
+            <p>You allow Strata read-only access to Health data. No writing. No manipulation.</p>
+          </article>
+          <article class="workflow-card">
+            <span class="step-no">03</span>
+            <h3>See your data profile</h3>
+            <p>Strata clearly shows which categories are present and how far they go back.</p>
+          </article>
+          <article class="workflow-card">
+            <span class="step-no">04</span>
+            <h3>Export cleanly</h3>
+            <p>Export as CSV, JSON, or Markdown for your own reporting and local AI workflows.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="screens">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">App Screens</span>
+            <h2>The product in real UI views.</h2>
+          </div>
+          <p>Click any screen for a larger preview. All visuals are based on the final App Store screenshot set.</p>
+        </div>
+
+        <div class="gallery-grid">
+          <button class="shot" type="button" data-shot-src="img/en/01-datenschatz.png" data-shot-title="Your data treasure, visible" data-shot-desc="Onboarding that reframes your Apple Health history as a user-owned asset.">
+            <span class="shot-thumb"><img src="img/en/01-datenschatz.png" alt="Data treasure" loading="lazy" decoding="async"></span>
+            <span class="shot-copy"><strong>Your data treasure, visible</strong><span>Onboarding entry</span></span>
+          </button>
+          <button class="shot" type="button" data-shot-src="img/en/02-freigabe.png" data-shot-title="Access with clarity" data-shot-desc="Permissions are explained clearly before access is granted.">
+            <span class="shot-thumb"><img src="img/en/02-freigabe.png" alt="Permission" loading="lazy" decoding="async"></span>
+            <span class="shot-copy"><strong>Access with clarity</strong><span>Health permissions</span></span>
+          </button>
+          <button class="shot" type="button" data-shot-src="img/en/03-aktivierung.png" data-shot-title="Direct activation" data-shot-desc="Apple Health is connected directly on-device.">
+            <span class="shot-thumb"><img src="img/en/03-aktivierung.png" alt="Activation" loading="lazy" decoding="async"></span>
+            <span class="shot-copy"><strong>Direct activation</strong><span>Local connection</span></span>
+          </button>
+          <button class="shot" type="button" data-shot-src="img/en/04-uebersicht.png" data-shot-title="Profile at a glance" data-shot-desc="See what is already there and how deep your history goes.">
+            <span class="shot-thumb"><img src="img/en/04-uebersicht.png" alt="Overview" loading="lazy" decoding="async"></span>
+            <span class="shot-copy"><strong>Profile at a glance</strong><span>History and coverage</span></span>
+          </button>
+          <button class="shot" type="button" data-shot-src="img/en/05-export.png" data-shot-title="Export without friction" data-shot-desc="Choose CSV, JSON, or Markdown directly in the app.">
+            <span class="shot-thumb"><img src="img/en/05-export.png" alt="Export" loading="lazy" decoding="async"></span>
+            <span class="shot-copy"><strong>Export without friction</strong><span>Select data formats</span></span>
+          </button>
+          <button class="shot" type="button" data-shot-src="img/en/06-eigene-auswertung.png" data-shot-title="Analyze on your terms" data-shot-desc="Use structured exports with your own trusted local AI tools.">
+            <span class="shot-thumb"><img src="img/en/06-eigene-auswertung.png" alt="Self analysis" loading="lazy" decoding="async"></span>
+            <span class="shot-copy"><strong>Analyze on your terms</strong><span>Analysis freedom</span></span>
+          </button>
+          <button class="shot" type="button" data-shot-src="img/en/07-einstellungen.png" data-shot-title="Full control" data-shot-desc="Clean settings for language, export, and privacy.">
+            <span class="shot-thumb"><img src="img/en/07-einstellungen.png" alt="Settings" loading="lazy" decoding="async"></span>
+            <span class="shot-copy"><strong>Full control</strong><span>Settings</span></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">Purchase</span>
+            <h2>Buy once. Use long-term.</h2>
+          </div>
+          <p>Strata stays intentionally simple: clear pricing, local data processing, no cloud obligation.</p>
+        </div>
+
+        <div class="pricing-wrap">
+          <article class="pricing-main">
+            <div class="inner">
+              <span class="eyebrow" style="color: rgba(255,245,234,0.78);">Strata for iPhone & iPad</span>
+              <p class="price">€9.99</p>
+              <p class="price-sub">One-time purchase · No subscription</p>
+              <button class="appstore-button" type="button" aria-disabled="true" title="App Store link will be added shortly">Mac App Store</button>
+            </div>
+          </article>
+          <aside class="pricing-side">
+            <div class="inner">
+              <h3>What you get</h3>
+              <ul class="pricing-list">
+                <li>Local access to your Apple Health data baseline</li>
+                <li>Export to CSV, JSON, and Markdown</li>
+                <li>DE/EN language support</li>
+                <li>Clean UI for iPhone and iPad</li>
+                <li>Data ownership without third-party server pressure</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="eyebrow">FAQ</span>
+            <h2>What to know before you buy.</h2>
+          </div>
+          <p>Key questions about privacy, exports, and practical use.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq-item" open>
+            <summary>Are my health data uploaded to a cloud?</summary>
+            <div class="faq-answer"><p>No. Strata is designed for local processing. Export files are only created when you explicitly trigger them.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Can I choose the export format freely?</summary>
+            <div class="faq-answer"><p>Yes. For each export, you can choose CSV, JSON, or Markdown.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Why is the app called Strata?</summary>
+            <div class="faq-answer"><p>“Strata” means layers. That is exactly how the app treats your health data: from activity and vitals to mental health as clearly separated, exportable layers.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Can I evaluate exported data with a local LLM?</summary>
+            <div class="faq-answer"><p>Yes. That is a core use case. You can process export files with local AI tools without giving up ownership. Your data stay your data treasure.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Is Strata suitable for non-technical users?</summary>
+            <div class="faq-answer"><p>Yes. The app guides users step by step through permissions, profile visibility, and export.</p></div>
+          </details>
+          <details class="faq-item">
+            <summary>Does Strata provide medical advice?</summary>
+            <div class="faq-answer"><p>No. Strata provides access and structure for your own data, but it does not provide diagnosis.</p></div>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-title">Strata</div>
+        <div style="font-size:0.92rem;color:var(--muted)">Understand and export health data locally with confidence.</div>
+      </div>
+      <div class="footer-links" aria-label="Legal">
+        <button class="footer-link-btn" id="openImpressum" type="button">Imprint</button>
+        <button class="footer-link-btn" id="openDatenschutz" type="button">Privacy</button>
+        <button class="footer-link-btn" id="openUpdates" type="button">Updates / Newsletter</button>
+        <a href="#top">Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie-notice" id="cookieNotice" role="region" aria-label="Privacy notice" aria-hidden="false">
+    <p class="cookie-text">Privacy note: This website does not use cookies. Personal data submitted through forms is sent directly to Robert Meyer to handle your request.</p>
+    <button type="button" class="cookie-ack" id="cookieAck">Acknowledge</button>
+  </div>
+
+  <button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+
+  <div class="legal-modal" id="impressumModal" aria-hidden="true">
+    <div class="legal-dialog" role="dialog" aria-modal="true" aria-labelledby="impressumTitle">
+      <div class="legal-head">
+        <h3 id="impressumTitle">Imprint</h3>
+        <button class="legal-close" id="closeImpressum" aria-label="Close imprint">×</button>
+      </div>
+      <iframe class="legal-frame" id="impressumFrame" title="Imprint"></iframe>
+    </div>
+  </div>
+
+  <div class="legal-modal" id="datenschutzModal" aria-hidden="true">
+    <div class="legal-dialog" role="dialog" aria-modal="true" aria-labelledby="datenschutzTitle">
+      <div class="legal-head">
+        <h3 id="datenschutzTitle">Privacy</h3>
+        <button class="legal-close" id="closeDatenschutz" aria-label="Close privacy">×</button>
+      </div>
+      <iframe class="legal-frame" id="datenschutzFrame" title="Privacy"></iframe>
+    </div>
+  </div>
+
+  <div class="legal-modal" id="updatesModal" aria-hidden="true">
+    <div class="updates-dialog" role="dialog" aria-modal="true" aria-labelledby="updatesTitle">
+      <div class="legal-head">
+        <h3 id="updatesTitle">Updates / Newsletter</h3>
+        <button class="updates-close" id="closeUpdates" aria-label="Close updates dialog">×</button>
+      </div>
+      <div class="updates-body">
+        <div class="updates-copy">
+          <h4>Product updates without the noise.</h4>
+          <p>If there is a new release or a visible improvement, we send a short email. No mass marketing, only product-related updates.</p>
+        </div>
+        <form class="updates-form" id="updatesForm" novalidate>
+          <div class="updates-row">
+            <label for="updatesName">Name (optional)</label>
+            <input id="updatesName" name="name" type="text" autocomplete="name">
+          </div>
+          <div class="updates-row">
+            <label for="updatesEmail">Email</label>
+            <input id="updatesEmail" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="updates-actions">
+            <button class="button" id="updatesSubmit" type="submit">Request updates</button>
+            <div class="updates-status" id="updatesStatus" aria-live="polite"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="shot-modal" id="shotModal" aria-hidden="true">
+    <div class="shot-dialog" role="dialog" aria-modal="true" aria-labelledby="shotTitle">
+      <div class="shot-head">
+        <h3 id="shotTitle">Screen</h3>
+        <button class="shot-close" id="closeShot" aria-label="Close screen">×</button>
+      </div>
+      <div class="shot-body">
+        <div class="visual"><img id="shotImage" src="" alt=""></div>
+        <div class="meta">
+          <h4 id="shotHeading"></h4>
+          <p id="shotDesc"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const endpoint = 'https://n8n.top-beraternetzwerk.de/webhook/termine';
+    const toTop = document.getElementById('toTop');
+    const cookieNotice = document.getElementById('cookieNotice');
+    const cookieAck = document.getElementById('cookieAck');
+
+    const impressumModal = document.getElementById('impressumModal');
+    const datenschutzModal = document.getElementById('datenschutzModal');
+    const updatesModal = document.getElementById('updatesModal');
+    const openImpressum = document.getElementById('openImpressum');
+    const closeImpressum = document.getElementById('closeImpressum');
+    const openDatenschutz = document.getElementById('openDatenschutz');
+    const closeDatenschutz = document.getElementById('closeDatenschutz');
+    const openUpdates = document.getElementById('openUpdates');
+    const closeUpdates = document.getElementById('closeUpdates');
+    const impressumFrame = document.getElementById('impressumFrame');
+    const datenschutzFrame = document.getElementById('datenschutzFrame');
+    const updatesForm = document.getElementById('updatesForm');
+    const updatesName = document.getElementById('updatesName');
+    const updatesEmail = document.getElementById('updatesEmail');
+    const updatesSubmit = document.getElementById('updatesSubmit');
+    const updatesStatus = document.getElementById('updatesStatus');
+
+    function bindModal(modal, opener, closer, frame, doc) {
+      if (!modal || !opener || !closer || !frame) return;
+      frame.srcdoc = doc;
+      const open = (ev) => {
+        ev?.preventDefault();
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+      const close = () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+      opener.addEventListener('click', open);
+      closer.addEventListener('click', close);
+      modal.addEventListener('click', (ev) => { if (ev.target === modal) close(); });
+      document.addEventListener('keydown', (ev) => {
+        if (ev.key === 'Escape' && modal.classList.contains('open')) close();
+      });
+    }
+
+    bindModal(impressumModal, openImpressum, closeImpressum, impressumFrame, `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{margin:0;padding:1.1rem 1rem 1.4rem;font-family:system-ui,sans-serif;color:#1f2738;line-height:1.55;background:#fff}h1{margin:0 0 .75rem;font-size:1.4rem;line-height:1.2}h2{margin:1rem 0 .35rem;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;color:#4f5a70}p{margin:.3rem 0;font-size:.94rem}a{color:#253b68;text-decoration:underline}</style></head><body><h1>Legal notice according to Section 5 TMG &amp; Section 55 RStV</h1><h2>Information according to Section 5 TMG</h2><p><strong>Robert Meyer</strong><br>Robert Meyer c/o Online-Impressum.de #4759<br>Europaring 90<br>53757 Sankt Augustin<br>Germany</p><h2>Contact</h2><p>Email: rm@kostenmanager.net<br>Contact form: <a href="https://mein.online-impressum.de/robert-meyer/" target="_blank" rel="noopener noreferrer">https://mein.online-impressum.de/robert-meyer/</a></p><h2>Responsible for content according to Section 55 para. 2 RStV</h2><p><strong>Robert Meyer</strong><br>Robert Meyer c/o Online-Impressum.de #4759<br>Europaring 90<br>53757 Sankt Augustin</p><h2>EU Commission platform for online dispute resolution</h2><p><a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p><h2>Consumer dispute resolution</h2><p>I am not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p></body></html>`);
+
+    bindModal(datenschutzModal, openDatenschutz, closeDatenschutz, datenschutzFrame, `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{margin:0;padding:1.1rem 1rem 1.4rem;font-family:system-ui,sans-serif;color:#1f2738;line-height:1.55;background:#fff}h1{margin:0 0 .75rem;font-size:1.4rem;line-height:1.2}h2{margin:1rem 0 .35rem;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;color:#4f5a70}p{margin:.3rem 0;font-size:.94rem}a{color:#253b68;text-decoration:underline}</style></head><body><h1>Privacy policy</h1><h2>1. Privacy at a glance</h2><p><strong>General information</strong></p><p>The following notes provide a simple overview of what happens to your personal data when you visit this website. This website was built with GDPR requirements in mind.</p><h2>2. Data collection on this website</h2><p>This website does not use cookies. No user accounts are created and no marketing cookies are set. If you use the Updates / Newsletter form, the data you enter is transmitted to Robert Meyer through an external webhook service in order to process your request.</p><h2>3. External services</h2><p>Google Fonts is used to render the website. Umami is used for privacy-friendly reach measurement. If you submit the update form, the entered data is sent to an external webhook endpoint. The privacy policies of the respective providers apply in addition.</p><h2>4. Data controller</h2><p>Robert Meyer – Robert Meyer<br>c/o Online-Impressum.de #4759<br>Europaring 90<br>53757 Sankt Augustin<br>Germany</p></body></html>`);
+
+    function openUpdatesModal() {
+      if (!updatesModal) return;
+      if (updatesStatus) {
+        updatesStatus.textContent = '';
+        updatesStatus.className = 'updates-status';
+      }
+      updatesModal.classList.add('open');
+      updatesModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeUpdatesModal() {
+      if (!updatesModal) return;
+      updatesModal.classList.remove('open');
+      updatesModal.setAttribute('aria-hidden', 'true');
+      if (updatesForm) updatesForm.reset();
+      if (updatesStatus) {
+        updatesStatus.textContent = '';
+        updatesStatus.className = 'updates-status';
+      }
+      document.body.style.overflow = '';
+    }
+
+    async function postPayload(payload) {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!response.ok) throw new Error('request_failed');
+    }
+
+    if (openUpdates && closeUpdates && updatesModal) {
+      openUpdates.addEventListener('click', openUpdatesModal);
+      closeUpdates.addEventListener('click', closeUpdatesModal);
+      updatesModal.addEventListener('click', (ev) => {
+        if (ev.target === updatesModal) closeUpdatesModal();
+      });
+    }
+
+    if (updatesForm && updatesEmail && updatesSubmit && updatesStatus) {
+      updatesForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const name = updatesName ? updatesName.value.trim() : '';
+        const email = updatesEmail.value.trim();
+        if (!email || !updatesEmail.checkValidity()) {
+          updatesStatus.textContent = 'Please enter a valid email address.';
+          updatesStatus.className = 'updates-status is-error';
+          updatesEmail.focus();
+          return;
+        }
+        updatesSubmit.disabled = true;
+        updatesStatus.textContent = 'Submitting ...';
+        updatesStatus.className = 'updates-status';
+        try {
+          const effectiveName = name || email;
+          await postPayload({
+            name: effectiveName,
+            email,
+            message: 'Strata Updates / Newsletter\n' + 'Name: ' + effectiveName + '\n' + 'Email: ' + email + '\nSource: Strata landing page\nPage: ' + window.location.href,
+            source: 'strata-landingpage-updates',
+            page: window.location.href,
+            interest: 'Strata Updates / Newsletter'
+          });
+          updatesForm.reset();
+          updatesStatus.textContent = 'Thank you. Your details have been submitted.';
+          updatesStatus.className = 'updates-status is-success';
+        } catch (_) {
+          updatesStatus.textContent = 'Submission failed just now. Please try again later.';
+          updatesStatus.className = 'updates-status is-error';
+        } finally {
+          updatesSubmit.disabled = false;
+        }
+      });
+    }
+
+    function installCookieNotice() {
+      if (!cookieNotice || !cookieAck) return;
+      const key = 'strata-cookie-hinweis';
+      const hide = () => {
+        cookieNotice.classList.add('is-hidden');
+        cookieNotice.setAttribute('aria-hidden', 'true');
+      };
+      const show = () => {
+        cookieNotice.classList.remove('is-hidden');
+        cookieNotice.setAttribute('aria-hidden', 'false');
+      };
+      if (localStorage.getItem(key) === '1') hide();
+      else show();
+      cookieAck.addEventListener('click', () => {
+        localStorage.setItem(key, '1');
+        hide();
+      });
+    }
+
+    const shotModal = document.getElementById('shotModal');
+    const shotImage = document.getElementById('shotImage');
+    const shotTitle = document.getElementById('shotTitle');
+    const shotHeading = document.getElementById('shotHeading');
+    const shotDesc = document.getElementById('shotDesc');
+    const closeShot = document.getElementById('closeShot');
+
+    document.querySelectorAll('.shot').forEach((button) => {
+      button.addEventListener('click', () => {
+        const src = button.getAttribute('data-shot-src') || '';
+        const title = button.getAttribute('data-shot-title') || 'Screen';
+        const desc = button.getAttribute('data-shot-desc') || '';
+        shotImage.src = src;
+        shotImage.alt = title;
+        shotTitle.textContent = title;
+        shotHeading.textContent = title;
+        shotDesc.textContent = desc;
+        shotModal.classList.add('open');
+        shotModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeShotModal() {
+      shotModal.classList.remove('open');
+      shotModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    closeShot.addEventListener('click', closeShotModal);
+    shotModal.addEventListener('click', (ev) => {
+      if (ev.target === shotModal) closeShotModal();
+    });
+    document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape' && shotModal.classList.contains('open')) closeShotModal();
+      if (ev.key === 'Escape' && updatesModal && updatesModal.classList.contains('open')) closeUpdatesModal();
+    });
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 520) toTop.classList.add('visible');
+      else toTop.classList.remove('visible');
+    });
+    toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    installCookieNotice();
+  </script>
+</body>
+</html>
