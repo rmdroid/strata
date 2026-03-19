@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Strata · Your health data treasure in your hands</title>
-  <meta name="description" content="Strata makes Apple Health data visible and exportable on-device. No cloud dependency, no third-party servers, full data ownership.">
-  <meta name="keywords" content="Strata, Apple Health export, local health data, iPhone health data, privacy app, data ownership, HealthKit export">
+  <title>Strata App · Your health data treasure in your hands</title>
+  <meta name="description" content="Strata App makes Apple Health data visible and exportable on-device. No cloud dependency, no third-party servers, full data ownership.">
+  <meta name="keywords" content="Strata App, StrataApp, Apple Health export, local health data, iPhone health data, privacy app, data ownership, HealthKit export">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#1f1712">
   <meta name="author" content="Robert Meyer">
-  <meta name="application-name" content="Strata">
-  <meta name="apple-mobile-web-app-title" content="Strata">
+  <meta name="application-name" content="Strata App">
+  <meta name="apple-mobile-web-app-title" content="Strata App">
   <link rel="canonical" href="https://strata-app.de/index_en.html">
   <link rel="alternate" hreflang="de-DE" href="https://strata-app.de/">
   <link rel="alternate" hreflang="en" href="https://strata-app.de/index_en.html">
   <link rel="alternate" hreflang="x-default" href="https://strata-app.de/">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_US">
-  <meta property="og:title" content="Strata · Your health data treasure in your hands">
+  <meta property="og:title" content="Strata App · Your health data treasure in your hands">
   <meta property="og:description" content="Understand and export Apple Health data locally. CSV, JSON, or Markdown.">
   <meta property="og:image" content="img/en/01-datenschatz.png">
   <meta property="og:url" content="https://strata-app.de/index_en.html">
-  <meta property="og:site_name" content="Strata">
+  <meta property="og:site_name" content="Strata App">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Strata · Your health data treasure in your hands">
+  <meta name="twitter:title" content="Strata App · Your health data treasure in your hands">
   <meta name="twitter:description" content="Data ownership, security, and simplicity.">
   <meta name="twitter:image" content="img/en/01-datenschatz.png">
   <link rel="icon" type="image/png" href="img/app-icon.png">
@@ -35,10 +35,11 @@
     {
       "@context": "https://schema.org",
       "@type": "SoftwareApplication",
-      "name": "Strata",
+      "name": "Strata App",
+      "alternateName": "StrataApp",
       "applicationCategory": "HealthApplication",
       "operatingSystem": "iOS, iPadOS",
-      "description": "Strata makes Apple Health data visible and exportable on-device. No cloud dependency, no third-party servers, full data ownership.",
+      "description": "Strata App makes Apple Health data visible and exportable on-device. No cloud dependency, no third-party servers, full data ownership.",
       "image": "https://strata-app.de/img/en/01-datenschatz.png",
       "url": "https://strata-app.de/index_en.html",
       "offers": {
@@ -69,7 +70,7 @@
           "name": "Are my health data uploaded to a cloud?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Strata is designed for local processing. Export files are only created when you explicitly trigger them."
+            "text": "No. Strata App is designed for local processing. Export files are only created when you explicitly trigger them."
           }
         },
         {
@@ -82,10 +83,10 @@
         },
         {
           "@type": "Question",
-          "name": "Why is the app called Strata?",
+          "name": "Why is the app called Strata App?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Strata means layers. The app works with clearly separated, exportable data layers."
+            "text": "The name Strata App refers to layers. The app works with clearly separated, exportable data layers."
           }
         },
         {
@@ -1039,10 +1040,37 @@
     .intro-audio-btn.is-blocked {
       opacity: 0.72;
     }
-    .intro-lang-switch {
+    .intro-top-left {
       position: absolute;
       top: max(1rem, env(safe-area-inset-top));
       left: max(1rem, env(safe-area-inset-left));
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      max-width: min(78vw, 480px);
+    }
+    .intro-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      min-height: 34px;
+      padding: 0.22rem 0.52rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      font-size: 0.78rem;
+      letter-spacing: 0.01em;
+      backdrop-filter: blur(8px);
+    }
+    .intro-brand img {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+    }
+    .intro-lang-switch {
       display: inline-flex;
       align-items: center;
       gap: 0.25rem;
@@ -1169,9 +1197,15 @@
 </head>
 <body>
   <div class="intro-overlay" id="lpIntro" aria-hidden="false">
-    <div class="intro-lang-switch" aria-label="Language">
-      <a href="index.html" lang="de" hreflang="de">DE</a>
-      <span class="active" aria-current="page">EN</span>
+    <div class="intro-top-left">
+      <div class="intro-brand" aria-label="App name">
+        <img src="img/app-icon.png" alt="Strata App icon" loading="eager" decoding="async">
+        <span>Strata App</span>
+      </div>
+      <div class="intro-lang-switch" aria-label="Language">
+        <a href="index.html" lang="de" hreflang="de">DE</a>
+        <span class="active" aria-current="page">EN</span>
+      </div>
     </div>
     <button class="intro-skip" id="lpIntroSkip" type="button">Skip</button>
     <div class="intro-shell">
@@ -1197,9 +1231,9 @@
 
   <header class="site-nav" aria-label="Navigation">
     <div class="container">
-      <a class="brand" href="#top" aria-label="Strata homepage">
-        <img src="img/app-icon.png" alt="Strata Icon" loading="eager" decoding="async">
-        <span>Strata</span>
+      <a class="brand" href="#top" aria-label="Strata App homepage">
+        <img src="img/app-icon.png" alt="Strata App Icon" loading="eager" decoding="async">
+        <span>Strata App</span>
       </a>
       <nav class="nav-links" aria-label="Sections">
         <a href="#workflow">Workflow</a>
@@ -1224,7 +1258,7 @@
           <div>
             <span class="eyebrow">Health data, redefined</span>
             <h1>Your data treasure.<span>Your control.</span></h1>
-            <p class="hero-lead">Strata gives you direct access to your Apple Health data: local, understandable, and exportable. No cloud dependency. No third-party transfer. No forced interpretation.</p>
+            <p class="hero-lead">Strata App gives you direct access to your Apple Health data: local, understandable, and exportable. No cloud dependency. No third-party transfer. No forced interpretation.</p>
             <div class="hero-tags">
               <span class="tag">100% local on device</span>
               <span class="tag">CSV · JSON · Markdown</span>
@@ -1237,12 +1271,12 @@
           </div>
           <aside class="hero-stage" aria-label="App preview">
             <div class="stage-head">
-              <span>Strata · Live Preview</span>
+              <span>Strata App · Live Preview</span>
               <span>iPhone + iPad</span>
             </div>
             <div class="stage-grid">
-              <img src="img/en/01-datenschatz.png" alt="Strata onboarding data treasure" loading="lazy" decoding="async">
-              <img src="img/en/06-eigene-auswertung.png" alt="Strata export and self-analysis" loading="lazy" decoding="async">
+              <img src="img/en/01-datenschatz.png" alt="Strata App onboarding data treasure" loading="lazy" decoding="async">
+              <img src="img/en/06-eigene-auswertung.png" alt="Strata App export and self-analysis" loading="lazy" decoding="async">
             </div>
           </aside>
         </div>
@@ -1275,7 +1309,7 @@
             <span class="eyebrow">Workflow</span>
             <h2>From hidden data to practical value in 4 steps.</h2>
           </div>
-          <p>Strata guides users through a complete flow: understand access, reveal data depth, inspect the profile, and export by design.</p>
+          <p>Strata App guides users through a complete flow: understand access, reveal data depth, inspect the profile, and export by design.</p>
         </div>
         <div class="workflow-grid">
           <article class="workflow-card">
@@ -1286,12 +1320,12 @@
           <article class="workflow-card">
             <span class="step-no">02</span>
             <h3>Grant read access</h3>
-            <p>You allow Strata read-only access to Health data. No writing. No manipulation.</p>
+            <p>You allow Strata App read-only access to Health data. No writing. No manipulation.</p>
           </article>
           <article class="workflow-card">
             <span class="step-no">03</span>
             <h3>See your data profile</h3>
-            <p>Strata clearly shows which categories are present and how far they go back.</p>
+            <p>Strata App clearly shows which categories are present and how far they go back.</p>
           </article>
           <article class="workflow-card">
             <span class="step-no">04</span>
@@ -1352,13 +1386,13 @@
             <span class="eyebrow">Purchase</span>
             <h2>Buy once. Use long-term.</h2>
           </div>
-          <p>Strata stays intentionally simple: clear pricing, local data processing, no cloud obligation.</p>
+          <p>Strata App stays intentionally simple: clear pricing, local data processing, no cloud obligation.</p>
         </div>
 
         <div class="pricing-wrap">
           <article class="pricing-main">
             <div class="inner">
-              <span class="eyebrow" style="color: rgba(255,245,234,0.78);">Strata for iPhone & iPad</span>
+              <span class="eyebrow" style="color: rgba(255,245,234,0.78);">Strata App for iPhone & iPad</span>
               <p class="price">€9.99</p>
               <p class="price-sub">One-time purchase · No subscription</p>
               <button class="appstore-button" type="button" aria-disabled="true" title="App Store link will be added shortly">Mac App Store</button>
@@ -1393,27 +1427,27 @@
         <div class="faq-list">
           <details class="faq-item" open>
             <summary>Are my health data uploaded to a cloud?</summary>
-            <div class="faq-answer"><p>No. Strata is designed for local processing. Export files are only created when you explicitly trigger them.</p></div>
+            <div class="faq-answer"><p>No. Strata App is designed for local processing. Export files are only created when you explicitly trigger them.</p></div>
           </details>
           <details class="faq-item">
             <summary>Can I choose the export format freely?</summary>
             <div class="faq-answer"><p>Yes. For each export, you can choose CSV, JSON, or Markdown.</p></div>
           </details>
           <details class="faq-item">
-            <summary>Why is the app called Strata?</summary>
-            <div class="faq-answer"><p>“Strata” means layers. That is exactly how the app treats your health data: from activity and vitals to mental health as clearly separated, exportable layers.</p></div>
+            <summary>Why is the app called Strata App?</summary>
+            <div class="faq-answer"><p>The name “Strata App” refers to layers. That is exactly how the app treats your health data: from activity and vitals to mental health as clearly separated, exportable layers.</p></div>
           </details>
           <details class="faq-item">
             <summary>Can I evaluate exported data with a local LLM?</summary>
             <div class="faq-answer"><p>Yes. That is a core use case. You can process export files with local AI tools without giving up ownership. Your data stay your data treasure.</p></div>
           </details>
           <details class="faq-item">
-            <summary>Is Strata suitable for non-technical users?</summary>
+            <summary>Is Strata App suitable for non-technical users?</summary>
             <div class="faq-answer"><p>Yes. The app guides users step by step through permissions, profile visibility, and export.</p></div>
           </details>
           <details class="faq-item">
-            <summary>Does Strata provide medical advice?</summary>
-            <div class="faq-answer"><p>No. Strata provides access and structure for your own data, but it does not provide diagnosis.</p></div>
+            <summary>Does Strata App provide medical advice?</summary>
+            <div class="faq-answer"><p>No. Strata App provides access and structure for your own data, but it does not provide diagnosis.</p></div>
           </details>
         </div>
       </div>
@@ -1423,7 +1457,7 @@
   <footer class="footer">
     <div class="container footer-grid">
       <div>
-        <div class="footer-title">Strata</div>
+        <div class="footer-title">Strata App</div>
         <div style="font-size:0.92rem;color:var(--muted)">Understand and export health data locally with confidence.</div>
       </div>
       <div class="footer-links" aria-label="Legal">
@@ -1563,10 +1597,10 @@
     }
 
     bindModal(impressumModal, openImpressum, closeImpressum, impressumFrame, `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{margin:0;padding:1.1rem 1rem 1.4rem;font-family:system-ui,sans-serif;color:#1f2738;line-height:1.55;background:#fff}h1{margin:0 0 .75rem;font-size:1.4rem;line-height:1.2}h2{margin:1rem 0 .35rem;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;color:#4f5a70}p{margin:.3rem 0;font-size:.94rem}a{color:#253b68;text-decoration:underline}</style></head><body><h1>Legal notice according to Section 5 TMG &amp; Section 55 RStV</h1><h2>Information according to Section 5 TMG</h2><p><strong>Robert Meyer</strong><br>Robert Meyer c/o Online-Impressum.de #4759<br>Europaring 90<br>53757 Sankt Augustin<br>Germany</p><h2>Contact</h2><p>Email: rm@kostenmanager.net<br>Contact form: <a href="https://mein.online-impressum.de/robert-meyer/" target="_blank" rel="noopener noreferrer">https://mein.online-impressum.de/robert-meyer/</a></p><h2>Responsible for content according to Section 55 para. 2 RStV</h2><p><strong>Robert Meyer</strong><br>Robert Meyer c/o Online-Impressum.de #4759<br>Europaring 90<br>53757 Sankt Augustin</p><h2>EU Commission platform for online dispute resolution</h2><p><a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p><h2>Consumer dispute resolution</h2><p>I am not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p></body></html>`);
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{margin:0;padding:1.1rem 1rem 1.4rem;font-family:system-ui,sans-serif;color:#1f2738;line-height:1.55;background:linear-gradient(180deg,#ffffff,#faf5ef)}h1{margin:0 0 .75rem;font-size:1.4rem;line-height:1.2}h2{margin:1rem 0 .35rem;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;color:#4f5a70}p{margin:.3rem 0;font-size:.94rem}a{color:#253b68;text-decoration:underline}</style></head><body><h1>Legal notice according to Section 5 TMG &amp; Section 55 RStV</h1><h2>Information according to Section 5 TMG</h2><p><strong>Robert Meyer</strong><br>Robert Meyer c/o Online-Impressum.de #4759<br>Europaring 90<br>53757 Sankt Augustin<br>Germany</p><h2>Contact</h2><p>Email: rm@kostenmanager.net<br>Contact form: <a href="https://mein.online-impressum.de/robert-meyer/" target="_blank" rel="noopener noreferrer">https://mein.online-impressum.de/robert-meyer/</a></p><h2>Responsible for content according to Section 55 para. 2 RStV</h2><p><strong>Robert Meyer</strong><br>Robert Meyer c/o Online-Impressum.de #4759<br>Europaring 90<br>53757 Sankt Augustin</p><h2>EU Commission platform for online dispute resolution</h2><p><a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr/</a></p><h2>Consumer dispute resolution</h2><p>I am not willing or obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p></body></html>`);
 
     bindModal(datenschutzModal, openDatenschutz, closeDatenschutz, datenschutzFrame, `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{margin:0;padding:1.1rem 1rem 1.4rem;font-family:system-ui,sans-serif;color:#1f2738;line-height:1.55;background:#fff}h1{margin:0 0 .75rem;font-size:1.4rem;line-height:1.2}h2{margin:1rem 0 .35rem;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;color:#4f5a70}p{margin:.3rem 0;font-size:.94rem}a{color:#253b68;text-decoration:underline}</style></head><body><h1>Privacy policy</h1><h2>1. Privacy at a glance</h2><p><strong>General information</strong></p><p>The following notes provide a simple overview of what happens to your personal data when you visit this website. This website was built with GDPR requirements in mind.</p><h2>2. Data collection on this website</h2><p>This website does not use cookies. No user accounts are created and no marketing cookies are set. If you use the Updates / Newsletter form, the data you enter is transmitted to Robert Meyer through an external webhook service in order to process your request.</p><h2>3. External services</h2><p>Google Fonts is used to render the website. Umami is used for privacy-friendly reach measurement. If you submit the update form, the entered data is sent to an external webhook endpoint. The privacy policies of the respective providers apply in addition.</p><h2>4. Data controller</h2><p>Robert Meyer – Robert Meyer<br>c/o Online-Impressum.de #4759<br>Europaring 90<br>53757 Sankt Augustin<br>Germany</p></body></html>`);
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{margin:0;padding:1.1rem 1rem 1.4rem;font-family:system-ui,sans-serif;color:#1f2738;line-height:1.55;background:linear-gradient(180deg,#ffffff,#faf5ef)}h1{margin:0 0 .75rem;font-size:1.4rem;line-height:1.2}h2{margin:1rem 0 .35rem;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;color:#4f5a70}p{margin:.3rem 0;font-size:.94rem}a{color:#253b68;text-decoration:underline}</style></head><body><h1>Privacy policy</h1><h2>1. Privacy at a glance</h2><p><strong>General information</strong></p><p>The following notes provide a simple overview of what happens to your personal data when you visit this website. This website was built with GDPR requirements in mind.</p><h2>2. Data collection on this website</h2><p>This website does not use cookies. No user accounts are created and no marketing cookies are set. If you use the Updates / Newsletter form, the data you enter is transmitted to Robert Meyer through an external webhook service in order to process your request.</p><h2>3. External services</h2><p>Google Fonts is used to render the website. Umami is used for privacy-friendly reach measurement. If you submit the update form, the entered data is sent to an external webhook endpoint. The privacy policies of the respective providers apply in addition.</p><h2>4. Data controller</h2><p>Robert Meyer – Robert Meyer<br>c/o Online-Impressum.de #4759<br>Europaring 90<br>53757 Sankt Augustin<br>Germany</p></body></html>`);
 
     function wait(ms) {
       return new Promise((resolve) => window.setTimeout(resolve, ms));
@@ -1579,7 +1613,7 @@
       const lines = [
         'Your iPhone stores thousands of health data points.',
         'Most people only ever see a small fraction of it.',
-        'Strata makes your data treasure visible and exportable locally.',
+        'Strata App makes your data treasure visible and exportable locally.',
         'No cloud dependency. No data handoff.'
       ];
 
@@ -1774,10 +1808,10 @@
           await postPayload({
             name: effectiveName,
             email,
-            message: 'Strata Updates / Newsletter\n' + 'Name: ' + effectiveName + '\n' + 'Email: ' + email + '\nSource: Strata landing page\nPage: ' + window.location.href,
+            message: 'Strata App Updates / Newsletter\n' + 'Name: ' + effectiveName + '\n' + 'Email: ' + email + '\nSource: Strata App landing page\nPage: ' + window.location.href,
             source: 'strata-landingpage-updates',
             page: window.location.href,
-            interest: 'Strata Updates / Newsletter'
+            interest: 'Strata App Updates / Newsletter'
           });
           updatesForm.reset();
           updatesStatus.textContent = 'Thank you. Your details have been submitted.';
