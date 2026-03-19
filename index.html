@@ -895,6 +895,203 @@
       border-color: rgba(176,106,61,0.32);
       outline: none;
     }
+    body.intro-lock {
+      overflow: hidden;
+    }
+    .intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 130;
+      background:
+        radial-gradient(900px 560px at 10% -10%, rgba(176,106,61,0.24), transparent 62%),
+        radial-gradient(700px 420px at 104% 0%, rgba(117, 161, 102, 0.16), transparent 66%),
+        linear-gradient(180deg, #110d0a 0%, #18120d 48%, #0f0b09 100%);
+      color: #f8eee2;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      padding: 1.25rem;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 560ms ease, visibility 560ms ease;
+    }
+    .intro-overlay.is-hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .intro-shell {
+      width: min(760px, 100%);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 26px;
+      padding: clamp(1.1rem, 3.6vw, 2rem);
+      background: linear-gradient(160deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
+    }
+    .intro-kicker {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      color: rgba(248, 238, 226, 0.72);
+    }
+    .intro-title {
+      margin: 0.75rem 0 1rem;
+      font-size: clamp(1.75rem, 6vw, 3.1rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      color: #fff7ee;
+    }
+    .intro-lines {
+      min-height: 11.2rem;
+      display: grid;
+      gap: 0.65rem;
+      margin: 0;
+    }
+    .intro-line {
+      margin: 0;
+      font-size: clamp(0.98rem, 2.45vw, 1.2rem);
+      line-height: 1.45;
+      color: rgba(251, 244, 236, 0.92);
+    }
+    .intro-cursor {
+      display: inline-block;
+      width: 0.6ch;
+      color: rgba(255,255,255,0.72);
+      animation: introBlink 900ms steps(1) infinite;
+    }
+    @keyframes introBlink {
+      50% { opacity: 0; }
+    }
+    .intro-actions {
+      margin-top: 1.1rem;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .intro-btn {
+      min-height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.22);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      padding: 0.66rem 0.9rem;
+      cursor: pointer;
+      transition: transform 170ms ease, box-shadow 170ms ease, border-color 170ms ease;
+      width: 100%;
+    }
+    .intro-btn:hover,
+    .intro-btn:focus-visible {
+      transform: translateY(-1px);
+      outline: none;
+      border-color: rgba(255,255,255,0.36);
+    }
+    .intro-btn-primary {
+      background: linear-gradient(135deg, #d17f49, #9d5a31);
+      color: #fff;
+      box-shadow: 0 14px 28px rgba(209,127,73,0.25);
+    }
+    .intro-audio-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.08);
+      color: #f8eee2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 170ms ease, border-color 170ms ease, opacity 170ms ease;
+      padding: 0;
+      flex: 0 0 auto;
+    }
+    .intro-audio-btn:hover,
+    .intro-audio-btn:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.36);
+      outline: none;
+    }
+    .intro-audio-btn svg {
+      width: 19px;
+      height: 19px;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .intro-audio-btn .mute-line {
+      display: none;
+    }
+    .intro-audio-btn.is-off .sound-wave {
+      opacity: 0.34;
+    }
+    .intro-audio-btn.is-off .mute-line {
+      display: inline;
+    }
+    .intro-audio-btn.is-blocked {
+      opacity: 0.72;
+    }
+    .intro-lang-switch {
+      position: absolute;
+      top: max(1rem, env(safe-area-inset-top));
+      left: max(1rem, env(safe-area-inset-left));
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.22rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+    }
+    .intro-lang-switch a,
+    .intro-lang-switch span {
+      min-height: 30px;
+      min-width: 42px;
+      padding: 0.18rem 0.55rem;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      color: rgba(248, 238, 226, 0.88);
+    }
+    .intro-lang-switch .active {
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.28);
+    }
+    .intro-lang-switch a:hover,
+    .intro-lang-switch a:focus-visible {
+      color: #fff;
+      outline: none;
+    }
+    .intro-skip {
+      position: absolute;
+      top: max(1rem, env(safe-area-inset-top));
+      right: max(1rem, env(safe-area-inset-right));
+      min-height: 40px;
+      border-radius: 999px;
+      padding: 0.44rem 0.84rem;
+      border: 1px solid rgba(255,255,255,0.26);
+      background: rgba(255,255,255,0.08);
+      color: #f8eee2;
+      cursor: pointer;
+      font-size: 0.84rem;
+    }
+    .intro-skip:hover,
+    .intro-skip:focus-visible {
+      border-color: rgba(255,255,255,0.44);
+      outline: none;
+    }
 
     @media (min-width: 760px) {
       .container { width: min(var(--max), calc(100% - 2rem)); }
@@ -912,6 +1109,17 @@
       }
       .footer-grid {
         grid-template-columns: 1fr auto;
+      }
+      .intro-actions {
+        display: inline-flex;
+      }
+      .intro-btn {
+        width: auto;
+        min-width: 260px;
+      }
+      .intro-audio-btn {
+        width: 50px;
+        height: 50px;
       }
     }
     @media (min-width: 980px) {
@@ -949,10 +1157,43 @@
       .hero { padding-top: 2.2rem; }
       .shot-body .meta h4 { font-size: 1.05rem; }
       .cookie-notice { align-items: stretch; }
+      .intro-lines { min-height: 13rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .intro-cursor {
+        animation: none;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="intro-overlay" id="lpIntro" aria-hidden="false">
+    <div class="intro-lang-switch" aria-label="Sprache">
+      <span class="active" aria-current="page">DE</span>
+      <a href="index_en.html" lang="en" hreflang="en">EN</a>
+    </div>
+    <button class="intro-skip" id="lpIntroSkip" type="button">Überspringen</button>
+    <div class="intro-shell">
+      <p class="intro-kicker">Strata App</p>
+      <h2 class="intro-title">Dein Datenschatz.<br>Dein Zugriff.</h2>
+      <div class="intro-lines" id="lpIntroLines" aria-live="polite"></div>
+      <div class="intro-actions">
+        <button class="intro-btn intro-btn-primary" id="lpIntroContinue" type="button">Zur App</button>
+        <button class="intro-audio-btn is-off" id="lpIntroAudioToggle" type="button" aria-label="Ton einschalten" title="Ton an">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4.5 14.5h3.8l4.5 4.2V5.3L8.3 9.5H4.5z"></path>
+            <path class="sound-wave" d="M16.4 9.1a4 4 0 0 1 0 5.8"></path>
+            <path class="sound-wave" d="M18.8 6.9a7.1 7.1 0 0 1 0 10.2"></path>
+            <path class="mute-line" d="M4.2 4.2l15.6 15.6"></path>
+          </svg>
+        </button>
+      </div>
+      <audio id="lpIntroAudio" preload="metadata" playsinline>
+        <source src="ambiente_intro.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+  </div>
+
   <header class="site-nav" aria-label="Navigation">
     <div class="container">
       <a class="brand" href="#top" aria-label="Startseite Strata">
@@ -1287,6 +1528,16 @@
     const updatesEmail = document.getElementById('updatesEmail');
     const updatesSubmit = document.getElementById('updatesSubmit');
     const updatesStatus = document.getElementById('updatesStatus');
+    const lpIntro = document.getElementById('lpIntro');
+    const lpIntroLines = document.getElementById('lpIntroLines');
+    const lpIntroSkip = document.getElementById('lpIntroSkip');
+    const lpIntroContinue = document.getElementById('lpIntroContinue');
+    const lpIntroAudio = document.getElementById('lpIntroAudio');
+    const lpIntroAudioToggle = document.getElementById('lpIntroAudioToggle');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const introAudioVolume = 0.15;
+    let introAudioEnabled = false;
+    let introAudioFadeTimer = null;
 
     function bindModal(modal, opener, closer, frame, doc) {
       if (!modal || !opener || !closer || !frame) return;
@@ -1315,6 +1566,153 @@
 
     bindModal(datenschutzModal, openDatenschutz, closeDatenschutz, datenschutzFrame, `<!doctype html>
 <html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style>body{margin:0;padding:1.1rem 1rem 1.4rem;font-family:system-ui,sans-serif;color:#1f2738;line-height:1.55;background:#fff}h1{margin:0 0 .75rem;font-size:1.4rem;line-height:1.2}h2{margin:1rem 0 .35rem;font-size:.95rem;text-transform:uppercase;letter-spacing:.06em;color:#4f5a70}p{margin:.3rem 0;font-size:.94rem}a{color:#253b68;text-decoration:underline}</style></head><body><h1>Datenschutzerklärung</h1><h2>1. Datenschutz auf einen Blick</h2><p><strong>Allgemeine Hinweise</strong></p><p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Diese Website wurde unter Beachtung der Datenschutz-Grundverordnung (DSGVO) entwickelt.</p><h2>2. Datenerfassung auf dieser Website</h2><p>Diese Website verwendet keine Cookies. Es werden keine Nutzerkonten geführt und keine Marketing-Cookies gesetzt. Wenn Sie das Formular „Updates / Newsletter“ nutzen, werden die von Ihnen eingegebenen Daten über einen externen Webhook-Dienst an Robert Meyer zur Bearbeitung des Anliegens übermittelt.</p><h2>3. Externe Dienste</h2><p>Für die Darstellung der Website werden Google Fonts geladen. Zur anonymisierten Reichweitenmessung wird Umami eingesetzt. Wenn Sie das Update-Formular absenden, werden die eingegebenen Daten an einen externen Webhook-Endpunkt übermittelt. Für diese externen Dienste gelten ergänzend die Datenschutzbestimmungen der jeweiligen Anbieter.</p><h2>4. Verantwortliche Stelle</h2><p>Robert Meyer – Robert Meyer<br>c/o Online-Impressum.de #4759<br>Europaring 90<br>53757 Sankt Augustin<br>Deutschland</p></body></html>`);
+
+    function wait(ms) {
+      return new Promise((resolve) => window.setTimeout(resolve, ms));
+    }
+
+    let introClosed = false;
+    async function playIntroTypewriter() {
+      if (!lpIntroLines) return;
+      lpIntroLines.innerHTML = '';
+      const lines = [
+        'Auf deinem iPhone liegen tausende Gesundheitsdaten.',
+        'Die meisten Nutzer sehen davon nur einen Bruchteil.',
+        'Strata macht deinen Datenschatz lokal sichtbar und exportierbar.',
+        'Ohne Cloud-Zwang. Ohne Datenabgabe.'
+      ];
+
+      for (const line of lines) {
+        const row = document.createElement('p');
+        row.className = 'intro-line';
+        const textNode = document.createTextNode('');
+        const cursor = document.createElement('span');
+        cursor.className = 'intro-cursor';
+        cursor.textContent = '|';
+        row.append(textNode, cursor);
+        lpIntroLines.appendChild(row);
+
+        if (reduceMotion) {
+          textNode.textContent = line;
+          cursor.remove();
+          continue;
+        }
+
+        for (const ch of line) {
+          if (introClosed) return;
+          textNode.textContent += ch;
+          await wait(40);
+        }
+        cursor.remove();
+        await wait(460);
+      }
+    }
+
+    function closeIntro(behavior = 'smooth') {
+      if (!lpIntro || introClosed) return;
+      introClosed = true;
+      if (lpIntroAudio && introAudioEnabled) {
+        fadeOutIntroAudio(520);
+      }
+      lpIntro.classList.add('is-hidden');
+      lpIntro.setAttribute('aria-hidden', 'true');
+      window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : behavior });
+      window.setTimeout(() => {
+        document.body.classList.remove('intro-lock');
+        lpIntro.style.display = 'none';
+      }, 570);
+    }
+
+    function initLandingIntro() {
+      if (!lpIntro || !lpIntroContinue || !lpIntroSkip) return;
+      document.body.classList.add('intro-lock');
+      if (lpIntroAudio) {
+        lpIntroAudio.volume = introAudioVolume;
+        lpIntroAudio.loop = false;
+      }
+      playIntroTypewriter();
+      lpIntroContinue.addEventListener('click', () => closeIntro('smooth'));
+      lpIntroSkip.addEventListener('click', () => closeIntro('auto'));
+      if (lpIntroAudio && lpIntroAudioToggle) {
+        setIntroAudioUi(false, false);
+        lpIntroAudioToggle.addEventListener('click', async () => {
+          if (introAudioEnabled) {
+            stopIntroAudio();
+            return;
+          }
+          try {
+            clearIntroAudioFade();
+            lpIntroAudio.currentTime = 0;
+            lpIntroAudio.volume = introAudioVolume;
+            await lpIntroAudio.play();
+            introAudioEnabled = true;
+            setIntroAudioUi(true, false);
+          } catch (_) {
+            setIntroAudioUi(false, true);
+          }
+        });
+        tryAutoplayIntroAudio();
+      }
+    }
+
+    async function tryAutoplayIntroAudio() {
+      if (!lpIntroAudio || !lpIntroAudioToggle) return;
+      try {
+        clearIntroAudioFade();
+        lpIntroAudio.currentTime = 0;
+        lpIntroAudio.volume = introAudioVolume;
+        await lpIntroAudio.play();
+        introAudioEnabled = true;
+        setIntroAudioUi(true, false);
+      } catch (_) {
+        introAudioEnabled = false;
+        setIntroAudioUi(false, true);
+      }
+    }
+
+    function setIntroAudioUi(isEnabled, isBlocked) {
+      if (!lpIntroAudioToggle) return;
+      lpIntroAudioToggle.classList.toggle('is-off', !isEnabled);
+      lpIntroAudioToggle.classList.toggle('is-blocked', !!isBlocked);
+      lpIntroAudioToggle.setAttribute('aria-label', isEnabled ? 'Ton ausschalten' : 'Ton einschalten');
+      lpIntroAudioToggle.setAttribute('title', isEnabled ? 'Ton aus' : 'Ton an');
+    }
+
+    function clearIntroAudioFade() {
+      if (introAudioFadeTimer) {
+        window.clearInterval(introAudioFadeTimer);
+        introAudioFadeTimer = null;
+      }
+    }
+
+    function stopIntroAudio() {
+      if (!lpIntroAudio) return;
+      clearIntroAudioFade();
+      lpIntroAudio.pause();
+      lpIntroAudio.currentTime = 0;
+      lpIntroAudio.volume = introAudioVolume;
+      introAudioEnabled = false;
+      setIntroAudioUi(false, false);
+    }
+
+    function fadeOutIntroAudio(duration = 520) {
+      if (!lpIntroAudio || lpIntroAudio.paused) {
+        stopIntroAudio();
+        return;
+      }
+      clearIntroAudioFade();
+      const startVolume = lpIntroAudio.volume || 0.15;
+      const steps = 8;
+      let currentStep = 0;
+      introAudioFadeTimer = window.setInterval(() => {
+        currentStep += 1;
+        const nextVolume = Math.max(0, startVolume * (1 - currentStep / steps));
+        lpIntroAudio.volume = nextVolume;
+        if (currentStep >= steps) {
+          stopIntroAudio();
+        }
+      }, Math.max(40, Math.floor(duration / steps)));
+    }
 
     function openUpdatesModal() {
       if (!updatesModal) return;
@@ -1445,6 +1843,7 @@
       if (ev.target === shotModal) closeShotModal();
     });
     document.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Escape' && lpIntro && !introClosed) closeIntro('auto');
       if (ev.key === 'Escape' && shotModal.classList.contains('open')) closeShotModal();
       if (ev.key === 'Escape' && updatesModal && updatesModal.classList.contains('open')) closeUpdatesModal();
     });
@@ -1453,6 +1852,7 @@
       else toTop.classList.remove('visible');
     });
     toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    initLandingIntro();
     installCookieNotice();
   </script>
 </body>
